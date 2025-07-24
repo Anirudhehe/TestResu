@@ -7,7 +7,7 @@ import ATS from '~/components/ATS';
 import Details from '~/components/Details';
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Resumind | Review" },
+    { title: "TestResu | Review" },
     { name: "description", content: "Get a full scale Analysis of Your Resume..." },
   ];
 }

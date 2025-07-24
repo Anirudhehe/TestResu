@@ -1,87 +1,103 @@
-# Welcome to React Router!
+# TestResu
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+TestResu is a full-stack React application that provides AI-powered feedback and scoring for resumes, helping users optimize their applications for their dream jobs. It leverages [React Router](https://reactrouter.com/) for routing, [TailwindCSS](https://tailwindcss.com/) for styling, and integrates with the [Puter.js](https://puter.com/) API for file storage, authentication, and AI analysis.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- **Resume Upload**: Users can upload their resume in PDF format.
+- **AI Analysis**: The app analyzes resumes using AI, providing detailed feedback and ATS (Applicant Tracking System) scores.
+- **Job Context**: Users can specify the job title and description for more targeted feedback.
+- **Score Breakdown**: Feedback includes scores for Tone & Style, Content, Structure, Skills, and ATS suitability.
+- **History Tracking**: Users can view all their previous resume submissions and feedback.
+- **Authentication**: Secure login and logout via Puter.js.
+- **File Management**: Uploaded files and images are managed in the user's Puter.js storage.
 
 ## Getting Started
 
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v20+
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Docker](https://www.docker.com/) (optional, for containerized deployment)
+
 ### Installation
 
-Install the dependencies:
+Clone the repository and install dependencies:
 
-```bash
+```sh
+git clone https://github.com/yourusername/testresu.git
+cd testresu
 npm install
 ```
 
 ### Development
 
-Start the development server with HMR:
+Start the development server:
 
-```bash
+```sh
 npm run dev
 ```
 
-Your application will be available at `http://localhost:5173`.
+Visit [http://localhost:5173](http://localhost:5173) in your browser.
 
-## Building for Production
+### Building for Production
 
 Create a production build:
 
-```bash
+```sh
 npm run build
 ```
 
-## Deployment
+### Deployment
 
-### Docker Deployment
+#### Docker
 
-To build and run using Docker:
+Build and run the app using Docker:
 
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
+```sh
+docker build -t resumind .
+docker run -p 3000:3000 resumind
 ```
 
-The containerized application can be deployed to any platform that supports Docker, including:
+#### Manual Deployment
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+Deploy the contents of the `build/` directory to your preferred Node.js hosting platform.
 
-### DIY Deployment
+## Usage
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+1. **Sign In**: Log in using the Puter.js authentication.
+2. **Upload Resume**: Go to the upload page, fill in job details, and upload your PDF resume.
+3. **View Feedback**: After analysis, view detailed feedback and scores for your resume.
+4. **Track Submissions**: Access the home page to review all your previous resume submissions and feedback.
+5. **Wipe Data**: Use the `/wipe` route to delete all stored files and feedback (for testing or resetting).
 
-Make sure to deploy the output of `npm run build`
+## Project Structure
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+app/
+  components/      # Reusable UI components
+  lib/             # Utility libraries (Puter.js integration, PDF conversion, etc.)
+  routes/          # Route components (home, upload, resume, auth, wipe)
+  app.css          # Global styles
+constants/         # Static data and helper constants
+types/             # TypeScript type definitions
+public/            # Static assets (images, icons, PDF worker)
+.react-router/     # React Router generated types
 ```
 
-## Styling
+## Technologies
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+- **React** & **React Router**
+- **TypeScript**
+- **TailwindCSS**
+- **Zustand** (state management)
+- **Puter.js** (cloud API for storage, AI, and authentication)
+- **Vite** (build tool)
+
+## License
+
+MIT
 
 ---
 
-Built with ❤️ using React Router.
+Built with ❤️ using React Router and [Puter.js](https://puter.com/).
