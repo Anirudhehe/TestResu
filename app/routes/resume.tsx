@@ -61,9 +61,9 @@ const resume = () => {
              <section className='feedback-section bg-[url("/images/bg-small.svg") bg-cover h-[100vh] sticky top-0 items-center justify-center'>
               
                 {imageUrl && resumeUrl && (
-                  <div className='animate-in fade-in duration-200 gradient-border max-sm:m-0 h-[90%] m-2xl:h-fit w-fit'>
-                    <a href={resumeUrl} target='_blank' rel='noopener noreferrer'>
-                      <img src={imageUrl} alt="Resume Image" title='Resume'/>
+                  <div className="animate-in fade-in duration-200 gradient-border max-sm:m-0 w-fit h-fit">
+                    <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                      <img src={imageUrl} alt="Resume Image" title="Resume" className="block max-w-full h-auto" />
                     </a>
                   </div>
                 )}
@@ -75,7 +75,7 @@ const resume = () => {
               {feedback ? (
                 <div className='flex flex-col animate-in fade-in duration-1000 gap-8'>
                  <Summary feedback = {feedback}/>
-                 <ATS score = {feedback.ATS.score || 0} suggestion={feedback.ATS.tips || [] }/>
+                 <ATS score = {feedback.ATS.score || 0} suggestions={feedback.ATS.tips || [] }/>
                   <Details feedback={feedback}/>
 
                 </div>
