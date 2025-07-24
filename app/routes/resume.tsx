@@ -51,39 +51,37 @@ const resume = () => {
 
   return (
     <main className='!pt-0'>
-      <nav className='resume-nav'>
+      <nav className='resume-nav z-10 relative'>
         <Link to='/' className='back-button'>
-        <img src="/icons/back.svg" alt="back button" className='w-2.5 h-2.5'/>
-        <span className='text-gray-600 text-sm font-semibold'>Back to Home Page</span>
+          <img src="/icons/back.svg" alt="back button" className='w-2.5 h-2.5'/>
+          <span className='text-gray-600 text-sm font-semibold'>Back to Home Page</span>
         </Link>
       </nav>
       <div className='flex flex-row w-full max-lg:flex-col-reverse'>
-             <section className='feedback-section bg-[url("/images/bg-small.svg") bg-cover h-[100vh] sticky top-0 items-center justify-center'>
-              
-                {imageUrl && resumeUrl && (
-                  <div className="animate-in fade-in duration-200 gradient-border max-sm:m-0 w-fit h-fit">
-                    <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
-                      <img src={imageUrl} alt="Resume Image" title="Resume" className="block max-w-full h-auto" />
-                    </a>
-                  </div>
-                )}
-              
+        <section className='feedback-section bg-[url("/images/bg-small.svg")] bg-cover h-[100vh] items-center justify-center pt-16'>
+          {/* Added pt-16 for padding-top so nav is not overlapped */}
+          {imageUrl && resumeUrl && (
+            <div className="animate-in fade-in duration-200 gradient-border max-sm:m-0 w-fit h-fit">
+              <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
+                <img src={imageUrl} alt="Resume Image" title="Resume" className="block max-w-full h-auto" />
+              </a>
+            </div>
+          )}
+        </section>
+        <section className='feedback-section'>
+          <h2 className='text-4xl !text-black font-bold'>Resume Review</h2>
+          {feedback ? (
+            <div className='flex flex-col animate-in fade-in duration-1000 gap-8'>
+             <Summary feedback = {feedback}/>
+             <ATS score = {feedback.ATS.score || 0} suggestions={feedback.ATS.tips || [] }/>
+              <Details feedback={feedback}/>
 
-             </section>
-            <section className='feedback-section'>
-              <h2 className='text-4xl !text-black font-bold'>Resume Review</h2>
-              {feedback ? (
-                <div className='flex flex-col animate-in fade-in duration-1000 gap-8'>
-                 <Summary feedback = {feedback}/>
-                 <ATS score = {feedback.ATS.score || 0} suggestions={feedback.ATS.tips || [] }/>
-                  <Details feedback={feedback}/>
+            </div>
+          ):(
+            <img src="/images/resume-scan-2.gif" alt="searching" className='w-full' />
+          )}
 
-                </div>
-              ):(
-                <img src="/images/resume-scan-2.gif" alt="searching" className='w-full' />
-              )}
-
-            </section>
+        </section>
       </div>
 
     </main>
